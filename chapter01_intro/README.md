@@ -18,7 +18,7 @@
 
 7.这就可以让不同浏览器厂商都基于这个标准去实现浏览器中的DOM，以方便js通过这些DOM接口和浏览器进行交互。
 - 7.1 注意：浏览器中的DOM是基于ECMAScript的核心类型和语法实现的一组API，目的就是实现针对浏览器的操作，只不过它在实现的时候遵循了W3C的DOM标准
-- 7.2 所以，也会有其他DOM出现，并不单单只有基于ECMAScript实现的DOM，例如SVG就实现了针对自己的一套DOM标准，也就是会有一组新的DOM的API用于SVG,这就像有一套针对HTMl的DOM API用于HTML
+- 7.2 所以，也会有其他DOM出现，并不单单只有基于ECMAScript实现的DOM，例如SVG就实现了针对自己的一套DOM标准，也就是会有一组新的DOM的API用于SVG。这就像有一套针对HTML的DOM API用于HTML
 
 <br />
 
