@@ -24,5 +24,5 @@
 
 8.JavaScript这门脚本语言遵循了ECMAScript，同时这个脚本语言还包括一些其他的内容
 -   8.1 JavaScript （以ECMAScript为标准设计的一门脚本语言）
--   8.2 DOM （以ECMAScript为标准设计的一组用于用于HTMl应用程序的API）
+-   8.2 DOM （以ECMAScript为标准设计的一组用于用于HTML应用程序的API）
 -   8.3 BOM

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>
+        document.addEventListener('readystatechange', function () {
+            console.log('readystatechange: ' + document.readyState);
+        })
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('document DOMContentLoaded');
+        })
+        window.onload = () => {
+            console.log('document load');
+        }
+        window.addEventListener('pageshow', function (e) {
+            console.log('pageshow');
+            console.log(e);
+
+        })
+    </script>
+
+    <!-- script的type属性可以忽略不写，默认就是text/javascript -->
+    <script type="text/javascript">
+        console.log('我在script标签中执行。。。');
+    </script>
+    <!-- defer只能用于外部引用，所以这种写法会忽略defer属性 -->
+    <script defer>
+        console.log('我在script标签中执行。。。 但是加了defer');
+    </script>
+
+    <!-- async同理 -->
+    <script async>
+        console.log('我在script标签中执行。。。 但是加了 async ');
+    </script>
+
+    <!-- 加了src会忽略script标签中的代码，无论是哪一种 defer或者async -->
+    <script src="">
+        console.log('加了src属性的script标签中的代码，你看不到我'); // 会被忽略
+    </script>
+
+    <script defer src="">
+        console.log('加了src属性defer的script标签中的代码，你看不到我'); // 会被忽略
+    </script>
+
+    <script async src="">
+        console.log('加了src属性async的script标签中的代码，你看不到我'); // 会被忽略
+    </script>
+
+
+    <!-- defer和async都是异步下载和执行的，不影响DOM文档解析 -->
+    <!-- script的async属性 遇到script标签立即下载，下载完后立即执行 -->
+    <script async src="./async.js"></script>
+    <!-- script的 defer 属性 遇到script标签立即下载，等待DOM文档解析完毕后执行 -->
+    <!-- defer的标签还会按照书写的顺序执行，加上它会延迟到DOM解析完毕后执行，所以实际用途比较大 -->
+    <script defer src="./defer.js"></script>
+
+    <title>title</title>
+</head>
+
+<body>
+    <h1>哈哈哈哈</h1>
+
+    <noscript>
+        <h1>您的浏览器禁用了js了哦</h1>
+    </noscript>
+</body>
+
+</html>
