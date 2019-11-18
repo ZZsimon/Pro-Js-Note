@@ -24,14 +24,20 @@
     </script>
     <script>
         // 对象的属性可以用关键字或者保留字 但是不建议！！！
+        // 即便是严格模式下也可以
+        "use strict"
         var obj = {}
         obj.null = 1
         obj.new = 2
         obj.var = 3
+        obj.arguments=4
+        obj.false=5
         console.log(obj);
         console.log(obj.null);
         console.log(obj.new);
         console.log(obj.var);
+        console.log(obj.arguments);
+        console.log(obj.false);
     </script>
 
 </body>

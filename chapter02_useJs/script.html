@@ -50,7 +50,8 @@
     </script>
 
 
-    <!-- defer和async都是异步下载和执行的，不影响DOM文档解析 -->
+    <!-- defer和async都是异步下载和执行的，不阻塞DOM文档解析 -->
+    
     <!-- script的async属性 遇到script标签立即下载，下载完后立即执行 -->
     <script async src="./async.js"></script>
     <!-- script的 defer 属性 遇到script标签立即下载，等待DOM文档解析完毕后执行 -->
