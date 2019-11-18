@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dataType</title>
+</head>
+
+<body>
+    <script>
+        'use strict'
+        // typeof虽然对于判断数据类型很多时候不准确，但是有一个作用确实非他不可
+        // 对于未声明的变量可以直接用typeof操作符 进行判断
+
+        // 其他操作符都会导致报错！！！
+        // if (b === undefined) {
+        //     console.log(1);
+        // }
+
+        // 成功做出判断
+        if (typeof b === 'undefined') {
+            console.log('b is undefined');
+        }
+
+        // 正常不会报错，严格模式下会报错，因为它没有意义，所以忽略
+        // delete c
+
+        var c;
+        console.log(typeof c === typeof d);
+
+
+    </script>
+
+</body>
+
+</html>

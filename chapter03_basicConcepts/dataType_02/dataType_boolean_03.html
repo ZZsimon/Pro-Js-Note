@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>boolean</title>
+    <style>
+        th,
+        td {
+            width: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // boolean只有true或者false两个值
+        // 但是js中所有变量都可以转换为true或者false( 调用用Boolean(...) )
+        // 在 流程控制语句 的时候会默认进行转换
+        // 转换规则如下
+        var a = +'d'
+        console.log(a);
+        console.log(a === false); // false 没有隐式转换
+        console.log(a == false); // false 没有隐式转换
+        if (!a) {
+            console.log('NAN隐式转换为了false');
+        }
+
+    </script>
+    <table>
+        <tr>
+            <th>/</th>
+            <th>boolean</th>
+            <th>string</th>
+            <th>number</th>
+            <th>undefined</th>
+            <th>null</th>
+            <th>对象(除去null)</th>
+        </tr>
+        <tr>
+            <td>true</td>
+            <td>true</td>
+            <td>非空字符串、" "这种不算、""才算</td>
+            <td>不是0或者NAN就行</td>
+            <td>-</td>
+            <td>-</td>
+            <td>默认转换为true</td>
+        </tr>
+        <tr>
+            <td>false</td>
+            <td>false</td>
+            <td>""空字符串</td>
+            <td>0或者NAN</td>
+            <td>默认转换为false</td>
+            <td>默认转换为false</td>
+            <td>-</td>
+        </tr>
+    </table>
+</body>
+
+</html>
