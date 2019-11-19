@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>string</title>
+</head>
+
+<body>
+    <script>
+        var str = "sss"
+        // 有一些特殊的字符串字面量，用来表示非打印字符或者有其他用途
+        var str2 = " \'s 2\n 3" // \n表示换行
+        console.log(str2);
+
+        // uxxxx 以xxxx十六进制代码表示一个Unicode字符
+        var str3 = "\u03a3" // u03a3表示Σ
+        console.log(str3);
+
+        // str.length平时开发都可以使用
+        // 但是要记住单个字符是双字节字符的时候，可能会出错，所以记住这个
+        console.log(str.length);
+
+        // 转换一个值为 字符串用String()或者 any + ''
+        // null和undefined没有toString()方法，所以就不用这个了
+        // String()相当于强化的toString() 能用toString就会用toString...
+        var booleaN = false
+        console.log(String(booleaN));
+        console.log(booleaN + '');
+
+
+
+
+
+    </script>
+</body>
+
+</html>
