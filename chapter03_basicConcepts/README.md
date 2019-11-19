@@ -13,4 +13,4 @@
 - 3.3 [boolean](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_boolean_03.html)
 - 3.4 [number](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_number_04.html)
 - 3.5 [string](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_string_05.html)
-- 3.6 [string](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_object_06.html)
+- 3.6 [object](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_object_06.html)
