@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>object</title>
+</head>
+
+<body>
+    <script>
+        // 默认会有一系列属性
+        var obj = new Object()
+
+        // 当然在js里面的对象不一定都是继承自Object类
+        // obj2自身没有任何属性，也不是由任何构造函数生成，所以也没有任何继承过来的属性
+        // 是一个纯净的对象
+        var obj2 = Object.create(null)
+    </script>
+
+</body>
+
+</html>
