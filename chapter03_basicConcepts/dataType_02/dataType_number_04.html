@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>number</title>
+</head>
+
+<body>
+    <script>
+        var a = 100
+        var b = 1.2
+        var c = .2; // 不推荐
+
+        // 都没关系，会自动去掉无效的后缀，以后看到都不用太担心这种写法
+        // 而且去掉后缀成为整数的话，需要的内存会缩小一半
+        var d = 1.0 // 1
+        var e = 2. // 2
+        var f = 2.20 //2.2
+
+        // 科学计数法也是正常的数字，以后看到就当作和1、2.2这种数字一样，可以加减乘除
+        var g = 3.125e7
+        console.log(3.125e7 + 1); // 31250001
+
+        // 要注意极限值的判断 Infinity
+        // js区分大小写，避免覆盖原来的方法名，首字母改为大写
+        var IsFinite = isFinite(Infinity)
+        console.log(IsFinite); // false
+        console.log(isFinite(1)); // true
+
+        // 特别是报错的时候可能会出现这个值
+        // 比如计算的时候值太大了 就是自动转换成 Infinity 这个特殊的数字
+
+        // 这个值不能做计算，做了计算也是白做，还是得到自身
+        console.log(Infinity + 1); // Infinity
+        // 但是这个值也是数字，类型是number
+        console.log(typeof Infinity); // number
+
+
+        // NaN 也是一个特殊的数字，它也是数字类型
+        // NaN 出现是为了避免报错，比如在java中数字和字符串做除法，就会报错
+        console.log(1 / 'aa'); // NaN
+
+        // NaN 和任何值都不相等，包括它自己
+        console.log(NaN == NaN) // false
+        // NaN 和Infinity一样，做了计算也是白做，始终得到自身
+        console.log(NaN + 1); // NaN
+        console.log(1 / NaN); // NaN
+
+        // Number、parseInt、parseFloat、+、-都可以转换成数字
+        // 计算时默认会用 Number转换
+        // 只考虑正常的数字转换，其他别记了。。。开发万年碰不到
+        var myNumber = '100'
+        var myFloat = '100.540'
+        console.log(Number(myNumber)) // 100
+
+        // 表示以 十进制 转换
+        // 不写的就会按照 parseInt 的默认规则解析，一般都是正常的十进制数组，所以都会省略
+        console.log(parseInt(myNumber, 10)); // 100
+        // 可以用来去除小数点，取整数
+        console.log(parseInt(myFloat)); // 100
+
+        console.log(parseFloat(myFloat)); // 100.54
+        console.log(+myNumber); // 相当于 Number(myNumber)
+        console.log(-myNumber); // 相当于 -Number(myNumber)
+    </script>
+</body>
+
+</html>
