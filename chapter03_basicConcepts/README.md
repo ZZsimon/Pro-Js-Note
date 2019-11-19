@@ -8,6 +8,6 @@
 - 2.3 总之，别用这些特殊的名字作为标识符名字就好了！
 
 3.[数据类型详解](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02)
-- 3.1 [undefined](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_undefined_01.html)
-- 3.2 [null](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_null_02.html)
-- 3.3 [boolean](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_boolean_03.html)
+- uundefined [undefined](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_undefined_01.html)
+- null [null](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_null_02.html)
+- boolean [boolean](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_boolean_03.html)
