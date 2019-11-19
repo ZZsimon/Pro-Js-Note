@@ -53,13 +53,13 @@
         // 计算时默认会用 Number转换
         // 只考虑正常的数字转换，其他别记了。。。开发万年碰不到
         var myNumber = '100'
-        var myFloat = '100.540'
+        var myFloat = '100.54'
         console.log(Number(myNumber)) // 100
 
         // 表示以 十进制 转换
-        // 不写的就会按照 parseInt 的默认规则解析，一般都是正常的十进制数组，所以都会省略
+        // 不写的就会按照 parseInt 的默认规则解析，一般都是正常的十进制数字，所以都会省略
         console.log(parseInt(myNumber, 10)); // 100
-        // 可以用来去除小数点，取整数
+        // 可以利用 默认的规则 取巧用来去除小数点，取整数
         console.log(parseInt(myFloat)); // 100
 
         console.log(parseFloat(myFloat)); // 100.54

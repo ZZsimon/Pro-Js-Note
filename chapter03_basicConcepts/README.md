@@ -11,4 +11,4 @@
 - 3.1 [undefined](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_undefined_01.html)
 - 3.2 [null](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_null_02.html)
 - 3.3 [boolean](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_boolean_03.html)
-- 3,4 [number](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_number_04.html)
+- 3.4 [number](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/dataType_02/dataType_number_04.html)
