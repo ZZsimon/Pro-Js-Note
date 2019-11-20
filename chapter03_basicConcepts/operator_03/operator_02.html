@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>operator_02</title>
+</head>
+
+<body>
+    <script>
+        // *、/、%做运算的时候都会先转换成数字
+
+        // 用的是Number() 当然也可以是 +一元操作符
+        var abc = '2' * 3
+    </script>
+
+    <script>
+        // 加法往 字符串的方向靠
+        // 减法往 数字的方向靠
+
+        var result = { a: 1 } + 22222 // 对象调用toString转换为字符串
+        // 再做字符串拼接
+        // 应用：
+        var result2 = 2222 + '' // 做字符串拼接，编程了 '2222'
+        // 2222会转换为字符串，转换规则和String()一样
+
+        var result3 = '2222' - '' // 字符串调用Number() 2222
+        var result4 = '2222' - undefined // 2222
+    </script>
+
+    <script>
+        // 关系操作符
+
+        
+    </script>
+
+</body>
+
+</html>

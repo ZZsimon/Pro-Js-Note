@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>operator_01</title>
+</head>
+
+<body>
+    <script>
+        // 一元操作符：只能操作一个值！！！
+
+        // ++、--这两个一元操作符只能作用一个值
+        var a = 1
+        console.log(a++) // 1
+        // console.log()会影响上面的a的值，因为会先执行 一元操作符 a++
+        // 从而改变了全局变量a的值
+        console.log(++a) // 3
+        console.log(a--); // 3
+
+        // +、-也是只能作用一个值
+        var b = 3
+            + b
+            // 不会报错，因为是操作符，执行了一个语句
+            // 像前面的a++也不会
+            - b
+
+        var c = '2'
+            + c // 作用域字符串就像执行Number()
+            - c // 作用域字符串就像执行Number()之后执行-一元操作
+    </script>
+
+    <script>
+        // 布尔操作符
+        
+        var bool = 'hello'
+        // 先将bool默认转换为boolean类型的值，再取反
+        // 因为任何值都可以转换为true或者false
+        console.log(!bool);
+
+        // 所以可以用 !!当作Boolean() 少写一点代码。。。
+        var b1 = Boolean(bool)
+        var b2 = !!bool
+        console.log(b1 === b2); // true
+
+    </script>
+
+    <script>
+        // &&和|| 操作符
+
+        var obj1 = { a: 1 }
+        var obj2 = { b: 2 }
+        var res = obj1 && obj2 // { a: 1 }
+        // 就是先 执行 !!obj1
+        // obj1为true就返回obj2
+        // obj1为false就返回obj1
+        // obj1和obj2可以是任何值
+
+        var obj3 = ""
+        // 因为 "" 转换为布尔值是false，所以返回 ""
+        var res2 = obj3 && obj2 // ""
+
+        var obj4 = NaN
+        var res3 = obj1 && obj4 // NaN
+
+        // 总结：前面的是true就得到后面的
+        //      前面的是false就得到前面的
+
+        // 有点用的场景：
+        var propsValue2 = true
+        var resres = propsValue2 && 1
+        // 有副作用，尽量不用
+        // propsValue2转换成false的话，就会返回propsValue2自身
+        // 比如 propsValue2=0 就会返回0了。。
+
+        // 所有操作符都不能操作未定义的变量
+        // 除了前面说过的typeof
+        obj1 && undefinedVaiable // 会报错
+        // 这就像 一元操作符也不能操作为定义的变量一样
+        ++undefinedVaiable // 会报错
+
+        // ||同理
+        // 前面的可以转换为true，就返回前面的
+        // 前面的转换为false，就返回后面的
+        // 最常用的就是给变量一个默认值
+        var propsValue
+        var haha = propsValue || 1 // 1
+        // 前面的转换为了false，所以返回后面的值
+    </script>
+
+    
+</body>
+
+</html>
