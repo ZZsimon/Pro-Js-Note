@@ -17,4 +17,4 @@
 
 #### 4.操作符
 - 4.1 [一元操作符、布尔操作符](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/operator_03/operator_01.html)
-- 4.2 [关系操作符、相等操作符、条件操作符、逗号操作符](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/operator_03/operator_02.html)
+- 4.2 [运算操作符（加减乘除余）、关系操作符、相等操作符、条件操作符、赋值操作符、逗号操作符](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter03_basicConcepts/operator_03/operator_02.html)
