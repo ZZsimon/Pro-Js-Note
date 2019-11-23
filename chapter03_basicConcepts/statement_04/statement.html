@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>statement</title>
+</head>
+
+<body>
+    <script>
+        // for循环语句
+        for (var index = 0; index < 6; index++) {
+            var simon = 'simon'
+        }
+
+        // 因为没有块级作用域，所以外部可以访问到for循环里定义的变量
+        // 但是会等到for循环语句执行完，因为上面的js代码是同步的
+        // 所以会按照书写顺序，一次执行
+        // 所以index变量值这个时候已经变成了6
+        console.log(index) // 6
+        console.log(simon) // simon
+
+        // for-in语句
+        for (var key in window) {
+            // 打印出了window对象的所有属性
+            document.write(key + '<br />')
+        }
+
+        // 同样，也可以访问到key变量
+        // 访问到的是最后一次遍历到的window属性
+        // document.write(key + '<br />')
+    </script>
+
+    <script>
+        // switch语句可以使用任何数据类型
+        var today = '星期一';
+
+        switch (today) {
+            case '星期一': console.log(1)
+                break;
+            case '星期二': console.log(2)
+                break;
+            default:
+                break;
+        }
+
+        // switch比较的时候是进行全等比较
+        switch (1) {
+            case 2: console.log(2)
+                break;
+            case '1': console.log('字符串1')
+                break;
+            case 1: console.log(1) // 被执行
+                break;
+            default:
+                break;
+        }
+    </script>
+
+    <script>
+        // arguments
+        
+        function doAdd(num1, num2) {
+            // num2的取决于arguments长度
+            // arguments.length>1 num2的值和arguments[1]的值保持同步
+            // arguments.length<=1 num2的值始终为undefined，不会和arguments[1]的值保持同步
+            arguments[1] = num2 + 10 // 赋值操作前num2的值是传入的参数值
+            console.log(num1 + num2);
+        }
+        doAdd(1) // 1+ undefined 
+
+        // 只有 arguments.length>1 才会影响到num2的值
+        doAdd(1, 2)// 1+ (2+10)
+    </script>
+</body>
+
+</html>
