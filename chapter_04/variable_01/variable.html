@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>variable</title>
+</head>
+<script>
+    // js不允许直接访问内存中的地址
+    // 引用类型的值是保存在内存中的对象
+
+    // 基本类型
+    var person = 'hello'
+    person.age = 12
+    console.log(person.age); // undefined
+
+    // 引用类型 可以添加属性和方法
+    var person = new String('hello')
+    person.age = 12
+    console.log(person.age); // 12
+</script>
+
+<script>
+    // 按值传递就是指：将基本类型值传递给另外一个变量
+    //   基本类型的变量传递的就是 基本类型值
+    //   引用类型的变量传递的也是基本类型值，只不过这个基本类型值引用着一个内存中的地址（其实它是一个指针）
+
+    // 按引用传递就是指：将内存中的地址传递给另外一个变量
+    // 注意：js不允许直接访问内存中的地址
+    // 所以js中不管是变量赋值还是给函数传递参数都是 按值传递
+
+    var classroom = new Object()
+    var newClassroom = classroom // 赋值的时候不能读取内存，classroom只是一个指针，引用着一个地址
+    newClassroom.name = '一年级一班' // 设置的可以访问到内存，因为这个时候改变的是内存中的对象
+
+    // new了一个新对象，把新对象的地址赋值给 newClassroom
+    // newClassroom的指针被覆盖了
+    newClassroom = new Object()
+    newClassroom.name = '二年级一班'
+</script>
+
+<script>
+    // 检测类型
+    // instance of操作符用来检测对象是什么类型的对象
+    // 基本数据类型全部返回false，因为他们根本就不是对象，不属于任何对象
+    // 
+</script>
+
+<body>
+
+</body>
+
+</html>
