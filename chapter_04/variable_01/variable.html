@@ -25,20 +25,17 @@
 <script>
     // 按值传递就是指：将基本类型值传递给另外一个变量
     //   基本类型的变量传递的就是 基本类型值
-    //   引用类型的变量传递的也是基本类型值，只不过这个基本类型值引用着一个内存中的地址（其实它是一个指针）
 
-    // 按引用传递就是指：将内存中的地址传递给另外一个变量
     // 注意：js不允许直接访问内存中的地址
-    // 所以js中不管是变量赋值还是给函数传递参数都是 按值传递
+    // 又因为对象的值是把存在内存中的，所以对象只能按引用传递
+    // 按引用传递就是指：将对象的引用值传递给另外一个变量，这个变量拿到这个引用值，也会引用相同的内存地址 
 
     var classroom = new Object()
-    var newClassroom = classroom // 赋值的时候不能读取内存，classroom只是一个指针，引用着一个地址
-    newClassroom.name = '一年级一班' // 设置的可以访问到内存，因为这个时候改变的是内存中的对象
+    var newClassroom = classroom // 赋值的时候不能读取内存，classroom只是内存地址的引用值
+    newClassroom.name = '一年级一班' // 添加属性的时候可以访问到内存，所以会改变内存中的对象
 
-    // new了一个新对象，把新对象的地址赋值给 newClassroom
-    // newClassroom的指针被覆盖了
-    newClassroom = new Object()
-    newClassroom.name = '二年级一班'
+    newClassroom = new Object() // new了一个新对象，把新对象的内存地址的引用值赋值给了newClassroom
+    newClassroom.name = '二年级一班' // newClassroom的值被覆盖了，变成了对新对象的内存地址的引用值
 </script>
 
 <script>

@@ -17,14 +17,15 @@
     </script>
 
     <script>
-        // 加法往 字符串的方向靠
-        // 减法往 数字的方向靠
-
-        var result = { a: 1 } + 22222 // 对象调用toString转换为字符串
+        // 加法存在拼接的情况
+        // 对象调用toString转换为字符串
         // 再做字符串拼接
+        var result = { a: 1 } + 22222
+
         // 应用：
-        var result2 = 2222 + '' // 做字符串拼接，变成了'2222'
+        // 做字符串拼接，变成了'2222'
         // 2222会转换为字符串，转换规则和String()一样
+        var result2 = 2222 + ''
 
         var result3 = '2222' - '' // 字符串调用Number() 2222
         var result4 = '2222' - undefined // 2222
@@ -43,7 +44,7 @@
 
         // 避免比较操作符操作 null和undefined
 
-        var compare1 = 1 > 2 // true
+        var compare1 = 1 > 2 // false
         var compare2 = '2' > '13' // true
         var compare3 = '2' > 13 // false 有一个是数字的话，另外一个就会转换
         var compare4 = '2' > true // true
