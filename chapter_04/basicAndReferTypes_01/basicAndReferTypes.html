@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>basicAndReferTypes</title>
+</head>
+<script>
+    // js不允许直接访问内存中的地址
+    // 引用类型的值是保存在内存中的对象
+
+    // 基本类型
+    var person = 'hello'
+    person.age = 12
+    console.log(person.age); // undefined
+
+    // 引用类型 可以添加属性和方法
+    var person = new String('hello')
+    person.age = 12
+    console.log(person.age); // 12
+</script>
+
+<script>
+    // 基本类型的变量复制的是变量本身
+    // 引用类型的变量复制是变量的指针 (引用类型的变量保存在内存中，而js不能访问内存，通过指针来引用到真正的变量值)
+
+    var classroom = new Object({
+        name: 'simon'
+    })
+    var newClassroom = classroom // 赋值的时候不能读取内存，classroom只是内存地址的引用值
+
+    // 但是添加/修改属性的时候可以访问到内存，所以会改变内存中的对象
+    console.log(newClassroom, 'newClassroom original');
+    newClassroom.name = '一年级一班'
+    newClassroom.num = 11
+    console.log(newClassroom, 'newClassroom before');
+
+    newClassroom = new Object() // new了一个新对象，把新对象的内存地址的引用值赋值给了newClassroom
+    newClassroom.name = '二年级一班' // newClassroom的值被覆盖了，变成了对新对象的内存地址的引用值
+    console.log(newClassroom, 'newClassroom after');
+
+
+</script>
+
+<script>
+    // 按值传递：传递变量本身的值
+    // 变量本身的值：
+    //   基本类型变量就是指 变量值
+    //   引用类型变量就是指 变量值的引用
+    // 所以：按值传递就是传递变量值或者指针！！！
+
+    // 按引用传递：传递一个真实的内存地址
+
+    // js中给方法传递参数都是按值传递的，也就是说不能传递一个内存中的对象，只能传递一个指针或者是基本类型变量值
+    function add(num) {
+        num += 10
+        return num
+    }
+    var count = 20
+
+    // 相当于把count变量的变量值10赋值给了 局部变量num
+    var res = add(count)
+
+    // num和count是相互独立的，所以num值改变了count是不会变的
+    console.log(count)
+    console.log(res)
+
+
+    function setName(obj) {
+        obj.name = 'simon'
+    }
+    var person = new Object()
+
+    // person的值是一个指针，它指向一个内存地址，这个地址中保存着一个对象
+    // 相当于把person变量的指针赋值给了obj，又因为添加/编辑属性会影响到内存中的对象
+    // 所以对obj变量添加属性，就会修改obj变量指向的对象
+    setName(person)
+    console.log(person, 'person');
+
+
+    function setName2(obj) {
+        obj.name = 'simon'
+
+        // 如果obj是一个内存地址的话，那么这里就会重新修改obj的内存地址
+        // 那么外面引用obj的person2变量就会被自动修改，引用到新的地址
+        // 从而 person2.name='hahahaha'
+        // 但是事实上 person2.name='simon'
+        // 这里的obj实际上是一个指针
+        // 所以给方法传递参数只会传递 基本变量值和指针，不会传递一个真实的内存地址
+        obj = new Object()
+
+        obj.name = 'hahahaha'
+    }
+    var person2 = new Object()
+    setName2(person2)
+    console.log(person2);
+
+
+</script>
+
+<script>
+    // 检测类型
+    // instance of操作符用来检测对象是什么类型的对象
+    // 基本数据类型全部返回false，因为他们根本就不是对象，不属于任何对象
+</script>
+
+<body>
+
+</body>
+
+</html>
