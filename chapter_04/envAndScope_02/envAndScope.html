@@ -10,7 +10,124 @@
 
 <body>
     <script>
+        /*
+            执行环境决定了可以到访问到哪些变量或者函数
+            分为全局执行环境和函数执行环境：
+                全局执行环境：最外围的一个执行环境
+                函数执行环境：每个函数执行的时候会创建一个函数执行环境
 
+            每个执行环境中都有一个对象保存着执行环境中的所有变量和函数，用来表示当前的执行环境（叫做变量对象）
+                全局执行环境的变量对象由实现ECMAScript的宿主决定
+                    比如浏览器中实现了ECMAScript，浏览器中的全局执行环境的变量对象是window对象，所有浏览器中的全局执行环境中的变量都保存在window对象上
+                    nodejs环境中也实现了ECMAScript，它的全局执行环境的变量对象是Global对象，所有nodejs中的全局执行环境中的变量都保存在global对象上
+                函数执行环境的变量对象是一个叫做 活动对象（activation object） 的对象
+                    活动对象中一开始只保存着arguments这个变量
+
+            代码在某一个环境执行的时候，会创建当前执行环境的变量对象的一个作用域链
+            作用域链的前端始终都是当前执行环境的变量对象，全局执行环境的变量对象是作用域链的最后一个对象
+                全局执行环境的变量对象window的作用域链：window    
+                函数执行环境的变量对象(AO)的作用域链：函数1的AO -> 函数2的AO -> ... -> window
+
+            作用域链用来对 当前执行环境中可以访问到的变量和函数进行 有序的访问（按照作用域链从顶端向下访问）
+            也就是说：作用域链决定了按照什么规则去访问数据
+
+            总结：
+                1.执行环境决定了可以到访问到哪些变量或者函数
+                2.作用域链决定了按照什么顺序去访问
+        */
+
+        var color = 'blue'
+        function changeColor() {
+            // 函数执行的时候因为都会有一个函数执行环境
+            // 所以会创建AO和作用域链
+            // changeColorAO的作用域链：函数changeColor的AO -> window
+
+            // 访问color变量
+            // 函数changeColor的AO中没有，向下寻找，发现window中有，就访问到了 color='blue'
+            if (color === 'blue') {
+                color = 'red'
+            } else {
+                color = 'yellow'
+            }
+        }
+        // 全局执行环境的变量对象window的作用域链：window
+        // 访问changeColor变量
+        // window中有，开始执行changeColor函数
+        changeColor()
+
+        console.log(color);
+
+    </script>
+
+
+    <script>
+
+        var g = 1
+        // catch语句可以延长作用域链，会将新的变量对象添加到当前执行环境的变量对象的作用域链最前端
+        // 所以catch语句中是可以访问到 当前执行环境中可以访问到的所有变量和方法
+
+        // catch会创建一个新的变量对象，这个变量对象中会有一些固定的属性（比如：被抛出的错误声明对象）
+        // 这样就能访问到catch抛出的异常对象
+        // 在catch语句中访问变量路径：catch的变量对象 -> 执行环境的变量对象（AO或者window） -> window
+        function myError(params) {
+            try {
+                var a = 1;
+                console.log(b);
+
+
+            } catch (error) {
+                console.log(g, 'g'); // 可以访问到全局执行环境中的g
+                console.log(a, 'a'); // 可以访问到myError函数执行时创建的局部执行环境中的a
+
+                console.log(typeof error, 'typeof error'); // object
+                console.log(error, 'error'); // 还可以访问到catch语句中创建的变量对象中的 错误声明对象
+            }
+        }
+        myError()
+
+
+
+
+        // 如果没有出现错误，catch语句中的代码是不会执行的，即便catch里的代码有错误，也不会报错，因为不会去执行
+        function myError2(params) {
+            try {
+                var a = 1;
+
+            } catch (error) {
+                console.log('出现错误啦');
+                console.log(simon); // 执行的话会报错，因为没有定义这个变量
+                console.log(g, 'g');
+                console.log(error, 'error'); // 还可以访问到catch语句中创建的变量对象中的 错误声明对象
+            }
+        }
+        myError2()
+    </script>
+
+
+    <script>
+        /*
+            js中没有块级作用域，
+        */
+        if (true) {
+            var a = 1
+        }
+        // java中这句代码会报错，因为花括号会创建一个块级作用域
+        // 块级作用域中的代码执行完就会被销毁
+        // 和方法一样，执行完函数，局部执行环境就会被销毁，方法内定义的变量外部都访问不到
+        console.log(a); // 1
+
+        /*
+            js中用var声明的变量会自动添加到最近的执行环境中
+            访问变量会按照 作用域链 的规则去查找并访问到
+            局部执行环境中访问到了变量，就不会使用父执行环境中的同名变量
+        */
+
+        var color = 'red'
+        function getColor() {
+            var color = 'green'
+            console.log(color);
+        }
+        getColor() // green
     </script>
 
 </body>
