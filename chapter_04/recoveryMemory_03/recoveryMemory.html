@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>recoveryMemory</title>
+</head>
+
+<body>
+
+    <script>
+
+        /*
+            垃圾收集其实就是 找出那些程序不再使用的变量，释放其占用的内存
+            js垃圾收集程序会自动按照一定间隔不断执行
+
+            标记清除：
+                当变量进入执行环境的时候打上进入环境标记，离开的时候打上离开环境标记
+                    例如函数执行的时候函数中的变量被打上进入局部执行环境，执行完被打上离开环境标记
+                    等到下一次垃圾收集程序执行的时候，就会释放这些变量占用的内存
+            引用清除：
+                根据引用次数来判断是否需要释放变量占用的内存
+                有循环引用的问题，所以都用了标记清除
+        */
+
+        // 可以手动解除引用（赋值为null），释放内存。
+        var Timer = setTimeout(() => {
+            console.log('some log');
+        }, 1000)
+        Timer = null // 释放Timer占用的内存
+
+    </script>
+</body>
+
+</html>
