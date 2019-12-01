@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array_01</title>
+</head>
+
+<body>
+    <script>
+        // js数组的长度是可变的
+        // 所以可以改变长度以删除数组中的某些元素
+        var arr = [1, 2, 3]
+        console.log(arr.length); // 3
+        arr.length = 2 // 会影响原来的数组
+        console.log(arr); // [1,2]
+
+        // slice
+        var arr1 = [1, 2, 3]
+        var arr2 = arr1.slice(0, arr1.length - 1) // 会返回一个新数组
+        console.log(arr2);
+
+        // splice
+        var arr3 = [1, 2, 3]
+        arr3.splice(arr3.length - 1, 1) // 会影响原来的数组
+    </script>
+
+    <script>
+
+        // 检测数组
+        var arr = [1, 2, 3]
+        var isArr = Array.isArray(arr)
+        var isArr2 = arr instanceof Array
+        console.log(isArr);
+        console.log(isArr2);
+
+    </script>
+
+    <script>
+        var arr = ['red', 'green', 'blue']
+        // 输出数组本身
+        console.log(arr.valueOf()); // ["red", "green", "blue"]
+
+        // 对数组每一项调用toString，再用逗号拼接每一项
+        console.log(arr.toString()); // red,green,blue
+
+        // 对数组每一项调用toLocaleString，再用逗号拼接每一项
+        console.log(arr.toLocaleString()); // red,green,blue
+
+        // join
+        console.log(arr.join(',')); // red,green,blue
+        console.log(arr.join('、')); // red、green、blue
+        console.log(arr.join('')); // redgreenblue
+
+    </script>
+</body>
+
+</html>

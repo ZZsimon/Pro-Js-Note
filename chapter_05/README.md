@@ -6,5 +6,6 @@
 - [Object](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/object_01/object.html)
 
 #### 2.Array
-<!-- - 2.1 [一元操作符、布尔操作符](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_03/operator_03/operator_01.html)
-- 2.2 [运算操作符（加减乘除余）、关系操作符、相等操作符、条件操作符、赋值操作符、逗号操作符](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_03/operator_03/operator_02.html) -->
+- 2.1 [length特性、检测数组、转换方法](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/array_02/array_01.html)
+- 2.2 [栈方法、队列方法、重排序方法、操作方法](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/array_02/array_02.html)
+- 2.3 [位置方法、迭代方法、归并方法](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/array_02/array_03.html)

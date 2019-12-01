@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array_03</title>
+</head>
+
+<body>
+
+    <script>
+        /* 位置方法 */
+
+        var arr = [1, 2, 3, 1, 2]
+        var index = arr.indexOf(2)
+        console.log(index); // 1
+        var index1 = arr.indexOf(2, 2)
+        console.log(index1); // 4
+        var index2 = arr.indexOf('2')
+        console.log(index2); // -1
+
+        var index3 = arr.lastIndexOf(1, 2)
+        console.log(index3); // 0
+
+    </script>
+
+    <script>
+
+        /* 迭代方法 */
+        var arr = [1, 2, 3]
+
+        // forEach不会修改原来的数组，而且没有返回值
+        arr.forEach((item) => {
+            item += 1
+        })
+
+        const arr1 = arr.map(item => item += 1)
+        console.log(arr1); // [2, 3, 4]
+
+
+        const arr2 = ["1", "2", "3"].map(parseInt);
+        console.log(arr2); // [1, NaN, NaN]
+
+    </script>
+
+    <script>
+
+        /* 归并方法 */
+        var arr = [1, 2, 3, 4]
+        var arr3 = arr.reduce((pre, cur, index, arr) => {
+            return pre + cur
+        }, 100)
+        console.log(arr3); // 110
+
+    </script>
+
+</body>
+
+</html>

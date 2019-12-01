@@ -68,15 +68,24 @@
     console.log(res)
 
 
-    function setName(obj) {
-        obj.name = 'simon'
+    function setName(obj) { // obj是一个指针
+        // obj.name = 'simon'
+
+        // 将这个指针赋值给newObj 
+        // newObj也指向了这个obj指向的内存地址
+        var newObj = obj
+        newObj.hobby = 'run'
+        return newObj
     }
     var person = new Object()
 
     // person的值是一个指针，它指向一个内存地址，这个地址中保存着一个对象
     // 相当于把person变量的指针赋值给了obj，又因为添加/编辑属性会影响到内存中的对象
     // 所以对obj变量添加属性，就会修改obj变量指向的对象
-    setName(person)
+
+    console.log(setName(person));
+
+
     console.log(person, 'person');
 
 
