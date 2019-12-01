@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>date</title>
+</head>
+
+<body>
+    <script>
+
+        // 获取当前日期毫秒数
+        var now = Date.now()
+        console.log(now);
+
+        var now1 = new Date()
+        console.log(now1);
+        console.log(+now1);
+
+        // 获取当前时间毫秒数
+        //   +new Date() ------ 不推荐
+        //   Date.now()
+        //   var now=new Date().getTime()
+        //   var now=new Date().valueOf()
+
+        // 方式1(不推荐)：+new Date()
+        var start = +new Date()
+        for (var index1 = 0; index1 < 10000000; index1++) {
+
+        }
+        var end = +new Date()
+        console.log(end - start);
+
+        // 方式2：Date.now()
+        var start1 = Date.now()
+        for (var index2 = 0; index2 < 10000000; index2++) {
+
+        }
+        var end1 = Date.now()
+        console.log(end1 - start1);
+
+        // 方式3：getTime()
+        var start2 = new Date().getTime()
+        for (var index3 = 0; index3 < 10000000; index3++) {
+
+        }
+        var end2 = new Date().getTime()
+        console.log(end2 - start2);
+
+        // 方式4：valueOf()
+        var start3 = new Date().valueOf()
+        for (var index4 = 0; index4 < 10000000; index4++) {
+
+        }
+        var end3 = new Date().valueOf()
+        console.log(end3 - start3);
+
+    </script>
+</body>
+
+</html>

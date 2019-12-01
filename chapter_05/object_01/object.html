@@ -10,17 +10,10 @@
 
 <body>
     <script>
-        // obj和obj2是完全一样
-        // 都会有Object这个引用类型抽象出来的一系列属性和方法，都是它的实例
-        var obj = {}
-        console.log(obj);
+        // Object引用类型的实例主要就是用来保存和传递数据
+        // 一个实例可以同时保存非常多个属性，并且方便管理
+        // 比如下面的obj存储了多个属性
 
-        var obj2 = new Object()
-        console.log(obj2);
-
-    </script>
-
-    <script>
         // obj除了a属性，还会有默认的一系列属性和方法
         var obj = {
             a: 'simon',
@@ -37,6 +30,18 @@
         console.log(obj);
         console.log(obj['5']);
         console.log(obj['1_2']);
+
+    </script>
+
+    <script>
+
+        // obj和obj2是完全一样
+        // 都会有Object这个引用类型抽象出来的一系列属性和方法，都是它的实例
+        var obj = {}
+        console.log(obj);
+
+        var obj2 = new Object()
+        console.log(obj2);
 
     </script>
 
