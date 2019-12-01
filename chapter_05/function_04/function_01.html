@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function_01</title>
+</head>
+
+<body>
+
+    <script>
+
+        // 函数也是对象
+        // hello变量、arr变量、obj变量都表示一个指针
+        function hello() {
+
+        }
+
+        var arr = new Array()
+
+        var obj = new Object()
+
+    </script>
+
+    <script>
+        // 创建函数有3种方式
+
+        // 函数声明语法创建
+        function demo() {
+            console.log('demo');
+
+        }
+
+        // 函数表达式创建
+        var demo1 = function () {
+            console.log('demo1');
+        }
+
+        // 使用Function构造函数
+        // 就如创建Object引用类型实例的时候使用Object构造函数一样 new Object()
+        // 不推荐！！！
+        var demo2 = new Function("console.log('demo2')")
+
+        // 执行函数
+        demo() // demo
+        demo1() // demo1
+        demo2() // dem2
+
+    </script>
+
+
+    <script>
+
+        // 函数为什么没有重载？
+        // 因为函数也是对象，函数名只是一个普通的变量，代表的是一个指针
+        // 多个同名函数，函数名会被覆盖，导致相同的函数名只会引用到最后定义的那个函数对象上
+
+    </script>
+
+    <script>
+
+        // 函数声明语法创建的函数有 函数提升的步骤
+        // 不会报错 add函数名会被提升到最前端
+        console.log(add(10, 10))
+        function add(n1, n2) {
+            return n1 + n2
+        }
+
+        // 函数表达式语法创建的函数没有 函数提升的机制
+        // 会报错，add1变量不会被提升
+
+        // 全局执行环境的变量对象是window对象
+        // window对象的作用域链是 window对象
+        // window对象中找不到add1这个变量
+        // 因此报错了
+        console.log(add1(10, 20));
+        var add1 = function (n1, n2) { return n1 + n2 }
+
+    </script>
+
+    <script>
+        // 函数名因为只是一个变量，所以可以返回一个函数名，也可以传递一个函数名给一个函数
+        // 就像使用其它变量一样
+
+        // 对一个对象数组按照某个对象属性进行排序
+        var arr = [
+            { a: 1, b: 3, c: true },
+            { a: 2, b: 33, c: true },
+            { a: 10, b: 1, c: true },
+            { a: 5, b: 23, c: true },
+        ]
+        arr.sort(function (m, n) {
+            return m.a - n.a
+        })
+        console.log(arr, 'arr');
+
+        // 但是这还不够，因为某个对象属性是不固定的，不一定是a属性
+        // 这个时候可能会考虑多加一个参数来告诉sort函数需要按照什么属性来排序
+        // 但是这种方式非常有侵入性，增加了sort函数的功能
+
+        // 所以可以考虑sort函数作为一个变量被另外一个函数返回出来
+        // 这样也能用上sort函数，并且另外一个函数可以传给sort函数变量，并且不会给sort函数的功能逻辑加上负担
+
+        // 所以需要一个方法，输入哪个属性就按照哪个属性来排序
+        function compareByProperty(property) {
+            return function (m, n) {
+                return m[property] - n[property]
+            }
+        }
+
+        arr.sort(compareByProperty('a'))
+        alert(arr[0].a); // 1
+        arr.sort(compareByProperty('b'))
+        alert(arr[0].a); // 10
+
+    </script>
+
+</body>
+
+</html>

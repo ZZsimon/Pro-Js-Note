@@ -30,7 +30,19 @@
         var Timer = setTimeout(() => {
             console.log('some log');
         }, 1000)
-        Timer = null // 释放Timer占用的内存
+        var Timer2 = Timer
+
+        // Timer被打上离开执行环境的标记
+        // 注意，解除的是指针（变量对对象的引用）
+        // 因为Timer2也引用着对象，所以定时器对象占用的内存不会被释放
+        Timer = null
+
+        // TImer2被打上离开执行环境的标记
+        // 此时，定时器占用的内存没有被任何变量引用
+        // 下一次垃圾收集程序执行的时候，就会释放定时器占用的内存
+        Timer2 = null
+
+
 
     </script>
 </body>

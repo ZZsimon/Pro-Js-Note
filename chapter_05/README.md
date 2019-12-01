@@ -12,3 +12,8 @@
 
 #### 3.Date
 - 3.1 [Date](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/date_03/date.html)
+
+#### 4.Function
+- 4.1 [没有重载、函数声明和函数表达式](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_01.html)
+- 4.2 [函数的属性 (arguments、this、caller)](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_02.html)
+<!-- - 4.3 [函数其他属性和方法 (length、prototype、call、apply、bind)](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_03.html) -->
