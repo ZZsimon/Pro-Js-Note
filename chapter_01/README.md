@@ -26,5 +26,3 @@
 - 8.1 JavaScript （以ECMAScript为标准设计的一门脚本语言）
 - 8.2 DOM （基于ECMAScript语法，以W3C的DOM为标准设计的一组用于用于HTML应用程序的API）
 - 8.3 BOM
-
-gggggdddd
