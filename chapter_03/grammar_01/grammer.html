@@ -10,34 +10,15 @@
 
 <body>
     <script>
-        // 严格模式下不能使用 arguments或者aval作为标识符
-        // "use strict"
-        var arguments = 33;
-        console.log(arguments);
+        var myCar='buick'
+        var _fetchData=function() {}
+        var $='jQuery'
+        var $2='jQuery2'
 
-        var eval = 44
-        console.log(eval);
+        document.write('【myCar】标识符的值：【'+myCar+'】<br />')
+        document.write('【_fetchData】标识符的值：【'+_fetchData+'】<br />')
+        document.write('【$】标识符的值：【'+$+'】')
 
-        var undefined = 233
-        console.log(undefined);
-
-    </script>
-    <script>
-        // 对象的属性可以用关键字或者保留字 但是不建议！！！
-        // 即便是严格模式下也可以
-        "use strict"
-        var obj = {}
-        obj.null = 1
-        obj.new = 2
-        obj.var = 3
-        obj.arguments=4
-        obj.false=5
-        console.log(obj);
-        console.log(obj.null);
-        console.log(obj.new);
-        console.log(obj.var);
-        console.log(obj.arguments);
-        console.log(obj.false);
     </script>
 
 </body>

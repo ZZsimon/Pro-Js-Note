@@ -11,6 +11,11 @@
 <body>
     <script>
         'use strict'
+        // typeof操作符返回的所有值都是字符串
+        var a=1
+        typeof 1 // "number"
+
+
         // typeof虽然对于判断数据类型很多时候不准确，但是有一个作用确实非他不可
         // 对于未声明的变量可以直接用typeof操作符 进行判断
 
@@ -19,17 +24,11 @@
         //     console.log(1);
         // }
 
-        // 成功做出判断
         // 可用于判断环境是否中存在想用的变量，比如一个sdk类
-        if (typeof b === 'undefined') {
-            console.log('b is undefined');
+        // b没有被声明过,typeof操作符会返回它的类型 “undefined”
+        if (typeof loginSdk === 'undefined') {
+            console.log('loginSdk is undefined');
         }
-
-        // 正常不会报错，严格模式下会报错，因为它没有意义，所以忽略
-        // delete c
-
-        var c;
-        console.log(typeof c === typeof d);
 
 
     </script>
