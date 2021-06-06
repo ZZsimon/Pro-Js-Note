@@ -28,12 +28,12 @@
     </script>
     <!-- defer只能用于外部引用，所以这种写法会忽略defer属性 -->
     <script defer>
-        console.log('我在script标签中执行。。。 但是加了defer');
+        console.log('虽然我加了defer，但是我在script标签中执行，所以是同步的');
     </script>
 
-    <!-- async同理 -->
+    <!-- async只能用于外部引用，所以这种写法会忽略async属性 -->
     <script async>
-        console.log('我在script标签中执行。。。 但是加了 async ');
+        console.log('虽然我加了async，但是我在script标签中执行，所以是同步的');
     </script>
 
     <!-- 加了src会忽略script标签中的代码，无论是哪一种 defer或者async -->
@@ -50,13 +50,15 @@
     </script>
 
 
-    <!-- defer和async都是异步下载和执行的，不阻塞DOM文档解析 -->
+    <!-- defer和async都是异步下载的不阻塞HTML文档解析 -->
+    <!-- 但是它们执行的时候都会阻塞HTML文档解析 -->
     
-    <!-- script的async属性 遇到script标签立即下载，下载完后立即执行 -->
-    <script async src="./async.js"></script>
-    <!-- script的 defer 属性 遇到script标签立即下载，等待DOM文档解析完毕后执行 -->
+    <!-- script的 defer 属性 遇到script标签立即下载，等待HTML文档解析完毕后执行 -->
     <!-- defer的标签还会按照书写的顺序执行，加上它会延迟到DOM解析完毕后执行，所以实际用途比较大 -->
     <script defer src="./defer.js"></script>
+
+    <!-- script的async属性 遇到script标签立即下载，下载完后立即执行 -->
+    <script async src="./async.js"></script>
 
     <title>script title</title>
 </head>
@@ -65,7 +67,7 @@
     <h1>哈哈哈哈</h1>
 
     <noscript>
-        <h1>您的浏览器禁用了js了哦</h1>
+        <h2>您的浏览器禁用了js哦</h2>
     </noscript>
 </body>
 
