@@ -18,57 +18,20 @@
 
     <script>
         // 加法存在拼接的情况
-        // 对象调用toString转换为字符串
-        // 再做字符串拼接
-        var result = { a: 1 } + 22222
-
-        // 应用：
-        // 做字符串拼接，变成了'2222'
+        // 应用：做字符串拼接
         // 2222会转换为字符串，转换规则和String()一样
-        var result2 = 2222 + ''
-
-        var result3 = '2222' - '' // 字符串调用Number() 2222
-        var result4 = '2222' - undefined // 2222
+        var result2 = 2222 + '' // '2222'
     </script>
 
     <script>
         // 关系操作符
-
-        // 只要有一个是数字，那么另外一个就会先转成数字
-        // 对象就调用valueOf方法，没有valueOf就调用toString方法
-        // 总之碰到对象先转换成基本数据类型
-
-        // 两个都是字符串，那么就按照对应位置的字符编码值来比较
-
-        // 布尔值会转成0或者1
-
-        // 避免比较操作符操作 null和undefined
-
-        var compare1 = 1 > 2 // false
-        var compare2 = '2' > '13' // true
-        var compare3 = '2' > 13 // false 有一个是数字的话，另外一个就会转换
-        var compare4 = '2' > true // true
-        var compare5 = '2' > 'true' // 注意，这是两个字符串，所以。。。
-
-        var compare6 = 'a' > true // NaN 
-        // +'a'转换成NaN NaN这个特殊的数字和谁比较都不好使，都等于它自身
-
+        // 只考虑数字互相比较
+        var compare7 = 2 > 3 // false
     </script>
-
+ 
     <script>
         // 相等操作符
-
-        // 布尔值转换成数字 
-        // 两个对象就比较 引用地址
-        // 一个对象就将对象转换成基本数据类型 调用valueOf
-        // 数字和字符串比较，字符串按照转换规则变成数字
-        // null和undefined不会转换 
-
-        var compare7 = 'a' == true // 'a'==1 => NaN==1 => false
-        // null==null null==undefined undefined==undefined
-        // 其他值都不和null和undefined相等
-
-        // 当然推荐使用全等操作符，保持代码中数据类型的完整性
+        // 只考虑全等操作符，保持代码中数据类型的完整性
         var compare8 = '1' === 1 // false
     </script>
 

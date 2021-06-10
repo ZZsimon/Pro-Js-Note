@@ -11,18 +11,15 @@
 <body>
     <script>
         // for循环语句
+        console.log(index); // undefined
         for (var index = 0; index < 6; index++) {
             var simon = 'simon'
         }
-
-        // 因为没有块级作用域，所以外部可以访问到for循环里定义的变量
-        // 但是会等到for循环语句执行完，因为上面的js代码是同步的
-        // 所以会按照书写顺序，依次执行
-        // 所以index变量值这个时候已经变成了6
         console.log(index) // 6
         console.log(simon) // simon
 
         // for-in语句
+        console.log(key); // undefined
         for (var key in window) {
             // 打印出了window对象的所有属性
             document.write(key + '<br />')
@@ -61,18 +58,8 @@
 
     <script>
         // arguments
-        
-        function doAdd(num1, num2) {
-            // num2的取决于arguments长度
-            // arguments.length>1 num2的值和arguments[1]的值保持同步
-            // arguments.length<=1 num2的值始终为undefined，不会和arguments[1]的值保持同步
-            arguments[1] = num2 + 10 // 赋值操作前num2的值是传入的参数值
-            console.log(num1 + num2);
-        }
-        doAdd(1) // 1+ undefined 
-
-        // 只有 arguments.length>1 才会影响到num2的值
-        doAdd(1, 2)// 1+ (2+10)
+        // ECMAScript函数中的行参只是为了提供便利，事实上不定义也无所谓
+        // 因为函数只会从arguments中去获取传入的参数
     </script>
 </body>
 

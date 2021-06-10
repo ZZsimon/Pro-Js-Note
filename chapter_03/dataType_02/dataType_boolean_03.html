@@ -20,15 +20,13 @@
         // boolean只有true或者false两个值
         // 但是js中所有变量都可以转换为true或者false( 调用用Boolean(...) )
         // 在 流程控制语句 的时候会默认进行转换
-        var a = +'d'
+        var a = +'d' // NaN
         console.log(a);
-        console.log(a === false); // false 没有隐式转换
-        console.log(a == false); // false 没有隐式转换
+        console.log(a === false); // false 变量a没有隐式转换
+        console.log(a == false); // false 变量a没有隐式转换
         if (!a) {
             console.log('NAN隐式转换为了false');
         }
-
-        // 转换规则如下
 
     </script>
     <table>

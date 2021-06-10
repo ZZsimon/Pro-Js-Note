@@ -33,6 +33,17 @@
 
     </script>
 
+
+
+<script>
+    // 由于typeof 操作符对【未声明的变量】和【未初始化的变量】返回的都是"undefined"
+    // 因此所有的变量都需要手动初始化一个有效值
+    // 这样子typeof如果返回"undefined"就只有一种情况：这个变量没有被声明
+    var aa=1
+    typeof aa // "undefined"
+    typeof bb // "undefined"
+</script>
+
 </body>
 
 </html>
