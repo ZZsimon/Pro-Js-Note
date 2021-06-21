@@ -10,9 +10,13 @@
 
 <body>
     <script>
-        // Object引用类型的实例主要就是用来保存和传递数据
-        // 一个实例可以同时保存非常多个属性，并且方便管理
-        // 比如下面的obj存储了多个属性
+        /*
+            1.可以将Object引用类型理解为是【所有引用类型的父类】
+            2.Object引用类型的实例主要就是用来【保存和传递数据】
+            3.一个实例可以同时保存非常多个属性，并且方便管理
+            4.比如下面的obj存储了多个属性
+        */
+         
 
         // obj除了a属性，还会有默认的一系列属性和方法
         var obj = {
@@ -20,6 +24,11 @@
             // 属性名会默认转换成字符串
             5: 333,
         }
+        // 默认的属性和方法
+        console.log(obj.constuctor);
+        console.log(obj.toString());
+        console.log(obj.valueOf());
+        console.log(obj.toLacaleString());
 
         // 使用.表示法添加、访问属性
         obj.hobby = 'run'

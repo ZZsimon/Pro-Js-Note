@@ -39,6 +39,11 @@
     </script>
 
     <script>
+        /*
+            数组默认的valueOf、toString、toLocaleString都会以逗号分隔每一项的字符串
+            因为重写了这些方法，因此调用的时候会得到不同的值
+        */
+
         var arr = ['red', 'green', 'blue']
         // 输出数组本身
         console.log(arr.valueOf()); // ["red", "green", "blue"]

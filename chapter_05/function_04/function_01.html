@@ -13,6 +13,9 @@
     <script>
 
         // 函数也是对象
+        // 函数是Function这个引用类型的实例
+        // 但是函数也是Object引用类型的实例
+
         // hello变量、arr变量、obj变量都表示一个指针
         function hello() {
 
@@ -100,10 +103,8 @@
         // 这个时候可能会考虑多加一个参数来告诉sort函数需要按照什么属性来排序
         // 但是这种方式非常有侵入性，增加了sort函数的功能
 
-        // 所以可以考虑sort函数作为一个变量被另外一个函数返回出来
-        // 这样也能用上sort函数，并且另外一个函数可以传给sort函数变量，并且不会给sort函数的功能逻辑加上负担
+        // 所以可以考虑传入sort的比较函数作为一个变量被另外一个函数返回出来
 
-        // 所以需要一个方法，输入哪个属性就按照哪个属性来排序
         function compareByProperty(property) {
             return function (m, n) {
                 return m[property] - n[property]

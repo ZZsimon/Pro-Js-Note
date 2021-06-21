@@ -7,6 +7,60 @@
     <title>function_03</title>
 </head>
 <body>
+
+    <script>
+        /*
+            函数既然是对象，那么他就有对象默认的一些属性和方法
+                constructor,toString()等等
+            函数还有一些独特的属性
+                prototype等
+        */
+
+        function aa() {
+            
+        }
+        console.log(aa.prototype);
+
+        /*
+            prototype属性的值是一个对象
+            ECMAScript中引用类型的实例所调用的方法
+            都会保存在prototype属性中
+        */
+
+
+    </script>
+
+
+    <script>
+        /*
+            函数还会有一些独特的方法
+                apply、call
+            这两个方法都不是继承自Object而得到的，是函数自带的
+            这两个函数的作用是为了修改调用函数的时候，函数内部的this指向
+            
+            他们的好处就是扩充了函数调用时的作用域
+        */
+
+       var name='simon'
+        var obj={name:'simon2'}
+        // 这个时候我们想用一个方法既能拿到window中name属性值，也能拿到obj中的name属性值
+        var fun=function () {
+            return this.name
+        }
+        console.log(fun())
+        console.log(fun.call(obj));
+        
+        // bind和上面的类似，只不过它可以创建一个函数并永久修改这个函数内部this指向
+        console.log('----测试bind---');
+        var fun1=fun.bind(obj)
+        console.log(fun1(),' window,fun1()')
+        var obj2={name:'simon3',fun1:fun1}
+        console.log(obj2.fun1(),' obj2.fun1()') // 不管在哪里调用，都输出obj对象的name属性值
+        obj.name='simon4'
+        console.log(fun1(),' obj={name:"simon4"}后，调用window,fun1()');
+        console.log(obj2.fun1(),' obj={name:"simon4"}后，调用obj2.fun1()');
+
+    </script>
     
 </body>
 </html>

@@ -76,14 +76,9 @@
         function demo() {
             console.log(this);
         }
-        var obj = {
-            demo: function () {
-                console.log(this);
-                console.log(demo.caller, 'demo.caller');
-            }
-        }
+        obj.objDemo=demo
         demo() // window（在window对象下执行）
-        obj.demo() // obj（在obj对象下执行）
+        obj.objDemo() // objDemo方法执行的时候，demo是obj对象的属性
     </script>
 
     <script>
