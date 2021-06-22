@@ -26,3 +26,9 @@
 - 4.1 [没有重载、函数声明和函数表达式](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_01.html)
 - 4.2 [函数内部的属性 (arguments、this)](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_02.html)
 - 4.3 [函数其他属性和方法 (prototype、call、apply、bind)](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_03.html)
+#### 5.包装类型
+- 5.1 [Boolean、Number、String](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/package_05/package.html)
+
+
+#### 5.内置对象
+- 5.1 [Global、Math](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/builtInObject_06/builtInObject.html)

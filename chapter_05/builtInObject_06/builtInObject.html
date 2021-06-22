@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内置对象</title>
+</head>
+
+<body>
+
+    <script>
+        /*
+            ECMAScript中内置了很多对象，这些对象在ECMAScript程序执行前就存在了
+            比如Object、Array、String等等，他们都是构造函数，但是函数也是对象～
+        */
+
+    </script>
+
+
+    <script>
+        /* Global对象 */
+
+        // 不属于任何其他对象的属性和方法都是它的属性和方法
+        // 在浏览器中window对象的一部分包含了Global对象
+        // 因此在浏览器中所有最外层的变量都是window的属性
+
+        // 查看Global对象
+        var testGlobal = function () {
+            return this
+        }()
+        console.log(testGlobal); // window对象
+    </script>
+
+    <script>
+        /* Math对象 */
+        var arr = [3, 54, 32, 16]
+        var max = Math.max(3, 54, 32, 16)
+        console.log(max, 'max');
+
+        // 利用...来打散数组
+        var max = Math.max(...arr)
+        console.log(max, 'max');
+
+        // 利用apply来打散数组
+        var max = Math.max.apply(Math, arr)
+        console.log(max, 'max');
+    </script>
+</body>
+
+</html>

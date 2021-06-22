@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>包装类型</title>
+</head>
+
+<body>
+
+    <script>
+        var s1 = 'some text'
+        var s2 = s1.substr(1)
+        console.log(s2);
+        // s1是基本类型值，没有方法可以供它调用
+        // 那么它是如何调用substr方法的呢？
+
+        // ECMAScript提供了3个引用类型：Boolean、Number、String，他们都被称为包装类型
+        // 当访问基本类型值的时候后台会自动创建对应的包装类型
+
+        var s1 = 'some text'
+        s1.color = 'red' // 访问s1的时候：new String('some text')
+
+        // 执行这行的时候s1的包装类型对象已经被清理掉了
+        // 同时这行也访问了s1，因此后台又执行了：new String('some text')
+        // 但是创建出来的对象没有color属性，因此返回 undefined
+        alert(s1.color)
+
+    </script>
+
+</body>
+
+</html>
