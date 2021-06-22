@@ -25,86 +25,21 @@
                 __proto__: Object
         */
 
-        // 实现阶乘
-        function factorial(num) {
-            return num <= 1 ? 1 : num * factorial(num - 1)
-        }
-        console.log(factorial(4), 'factorial 函数'); // 1*2*3*4
-
-        // 但是factorial名字可能会变，这个时候会要求内部的代码也要求变，这是非常不友好的
-        // 通过一个外部函数传入呢？
-        function myFactorial(num) {
-            // debugger
-            var name = function (num) {
-                // debugger
-                return num <= 1 ? 1 : num * name(num - 1)
-            }
-            return name(num)
-        }
-        console.log(myFactorial(4), 'myFactorial 函数'); //24
-        var myFactorialOther = myFactorial
-        myFactorial = null
-        console.log(myFactorialOther(4), 'myFactorialOther 函数'); // 24
-        // 实现了～
-
-
-
-        // 当然还有更优雅的方式~
-        function factorial2(num) {
-            // 但是严格模式下不允许访问这个属性，所以知道就好了
-            // "use strict";
-
-            // arguments.callee引用着函数对象
-            // 所有调用arguments.callee() 相当于调用 factorial()
-            return num <= 1 ? 1 : num * arguments.callee(num - 1)
-        }
-        var otherFactorial2 = factorial2
-
-        // 即使factorial2被解除引用也无所谓
-        // 因为otherFactorial2已经引用着之前的factorial2引用的函数对象了
-        factorial2 = null
-        // 调用的时候arguments.callee引用着的是 当前otherFactorial2变量引用着的函数对象
-        // 而如果使用变量名 factorial2 的话，就会报错了，因为这个时候factorial2变量已经找不到了
-        console.log(otherFactorial2(4), 'otherFactorial2 函数'); // 24
-
     </script>
 
     <script>
-        /* this对象 */
-
-        // this对象引用着 函数执行的环境对象，即函数在什么对象下执行的
+        /* 
+            this对象
+            当函数调用的时候，函数属于哪个对象，this就引用到这个对象
+            this对象的好处：可以在函数内部访问到调用函数的对象
+        */
         function demo() {
             console.log(this);
         }
-        obj.objDemo=demo
-        demo() // window（在window对象下执行）
-        obj.objDemo() // objDemo方法执行的时候，demo是obj对象的属性
-    </script>
-
-    <script>
-        /* caller对象 */
-
-        // caller对象引用着的是：调用当前函数的函数对象（如果是window下调用函数，那么它的值是null）
-        // 因为引用的是函数对象，所以不是在函数调用中就会是nul
-        // 上面的obj.demo()调用的时候 也是null
-        function demo() {
-            console.log(demo.caller);
-        }
-
-        function demo2() {
-            demo()
-        }
-
-
-        demo2() // 输出如下：
-        /*
-            ƒ demo2() {
-                demo()
-            }
-        */
-
-        demo() // null
-
+        var obj = {}
+        obj.objDemo = demo
+        demo() // this指向window（demo函数执行的时候，demo函数属于window）
+        obj.objDemo() // this指向obj （objDemo函数执行的时候，objDemo函数属于obj这个对象）
     </script>
 
 </body>

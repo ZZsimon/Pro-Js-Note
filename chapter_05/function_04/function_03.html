@@ -30,7 +30,7 @@
         console.log(aa.prototype); // 是一个对象
 
         var arr = [1, 2, 3]
-        console.log(arr.prototype); // undefined （因为arr是一个对象，对象没有prototype属性）
+        console.log(arr.prototype); // undefined （因为arr是一个普通对象，普通对象没有prototype属性）
         console.log(arr.constructor.prototype); // 是一个数组（arr.constructor是一个函数）
 
     </script>
@@ -55,7 +55,7 @@
         // 这个时候如果obj对象也想调用fun，默认我们只能给obj对象添加一个fun属性，属性值是fun方法
         // 但是我们并不想这样，即便obj默认无法调用fun，我们也想有一种方法可以让它调用到，可以理解为一个外挂
         // 这个外挂就是call：call提供了另外一种方式调用函数，并且可以指定this指向
-        // 它可以让对象调用到默认无法调用的函数！！！
+        // 它可以让对象调用到默认无法调用到的函数！！！
         console.log(fun.call(obj)); // obj调用到了fun函数，并且fun函数内部的指向是obj自身
     </script>
 
