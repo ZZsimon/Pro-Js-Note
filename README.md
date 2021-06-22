@@ -11,3 +11,5 @@ JavaScript高级程序设计读书笔记
 第四章：[变量、作用域和内存问题](https://github.com/ZZsimon/Pro-Js-Note/tree/master/chapter_04)
 
 第五章：[引用类型](https://github.com/ZZsimon/Pro-Js-Note/tree/master/chapter_05)
+
+第六章：[面向对象](https://github.com/ZZsimon/Pro-Js-Note/tree/master/chapter_06)
