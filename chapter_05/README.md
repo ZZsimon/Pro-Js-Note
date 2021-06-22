@@ -9,7 +9,7 @@
 
 - 但是因为复杂数据多种多样，仅仅用Object这个类型来保存复杂的数据还是不够用，因此需要给Object这个引用类型细分，细分出不同的引用类型来表示不同的复杂数据
 - ECMAScript中默认会有一些不同的引用类型：Array、Date、Math、Function等等
-- 而不是管是什么类型的引用类型，它们的实例都被称为对象。如果理解了它们都属于Object这个引用类型，就好理解了。
+- 而不管是什么类型的引用类型，它们的实例都被称为对象。如果理解了它们都属于Object这个引用类型，就好理解了。
 
 #### 1.Object
 - 1.1 [Object](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/object_01/object.html)
