@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>function_03</title>
 </head>
+
 <body>
 
     <script>
         /*
             函数既然是对象，那么他就有对象默认的一些属性和方法
                 constructor,toString()等等
+
             函数还有一些独特的属性
                 prototype等
+
+            函数的prototype属性的值是可能是一个对象，也可能是一个数组
+            但是只有函数有prototype属性
+            ECMAScript中引用类型的实例所调用的方法
+            都会保存在prototype属性中 
         */
 
         function aa() {
-            
+
         }
-        console.log(aa.prototype);
+        console.log(aa.prototype); // 是一个对象
 
-        /*
-            prototype属性的值是一个对象
-            ECMAScript中引用类型的实例所调用的方法
-            都会保存在prototype属性中
-        */
-
+        var arr = [1, 2, 3]
+        console.log(arr.prototype); // undefined （因为arr是一个对象，对象没有prototype属性）
+        console.log(arr.constructor.prototype); // 是一个数组（arr.constructor是一个函数）
 
     </script>
 
@@ -36,31 +41,74 @@
             函数还会有一些独特的方法
                 apply、call
             这两个方法都不是继承自Object而得到的，是函数自带的
-            这两个函数的作用是为了修改调用函数的时候，函数内部的this指向
-            
-            他们的好处就是扩充了函数调用时的作用域
         */
 
-       var name='simon'
-        var obj={name:'simon2'}
-        // 这个时候我们想用一个方法既能拿到window中name属性值，也能拿到obj中的name属性值
-        var fun=function () {
+        var name = 'simon'
+        var obj = { name: 'simon2' }
+        var fun = function () {
             return this.name
         }
+        // 默认调用函数只能通过fun()这种方式
+        // 调用的时候fun函数属于window对象，this指向window
         console.log(fun())
-        console.log(fun.call(obj));
-        
-        // bind和上面的类似，只不过它可以创建一个函数并永久修改这个函数内部this指向
-        console.log('----测试bind---');
-        var fun1=fun.bind(obj)
-        console.log(fun1(),' window,fun1()')
-        var obj2={name:'simon3',fun1:fun1}
-        console.log(obj2.fun1(),' obj2.fun1()') // 不管在哪里调用，都输出obj对象的name属性值
-        obj.name='simon4'
-        console.log(fun1(),' obj={name:"simon4"}后，调用window,fun1()');
-        console.log(obj2.fun1(),' obj={name:"simon4"}后，调用obj2.fun1()');
 
+        // 这个时候如果obj对象也想调用fun，默认我们只能给obj对象添加一个fun属性，属性值是fun方法
+        // 但是我们并不想这样，即便obj默认无法调用fun，我们也想有一种方法可以让它调用到，可以理解为一个外挂
+        // 这个外挂就是call：call提供了另外一种方式调用函数，并且可以指定this指向
+        // 它可以让对象调用到默认无法调用的函数！！！
+        console.log(fun.call(obj)); // obj调用到了fun函数，并且fun函数内部的指向是obj自身
     </script>
-    
+
+
+
+    <script>
+        /*
+            slice() 方法返回一个新的数组对象，这一数组是一个由 begin 和 end 决定的原数组的浅拷贝
+            调用slice方法的数组可以是一个真正的数组，也可以是一个类数组对象
+        */
+        var slice = function (start, end) {
+            start = start === undefined ? 0 : start;
+            end = end === undefined ? this.length : end;
+            var res = [];
+            for (var i = start; i < end; i++) {
+                res.push(this[i]);
+            }
+            return res;
+        }
+
+        function testArrayLike() {
+            // 默认调用slice函数，需要找到调用的时候这个方法属于哪个对象
+            // arguments没有这个方法，因此无法正常调用
+            // 只能通过call方法调用：slice.call(arguments)
+
+            // slice方法执行，内部this表示arguments对象
+            // 执行完slice后，返回了一个真正的数组
+
+            const arr = slice.call(arguments)
+            console.log(arr);
+        }
+
+        testArrayLike('a', 'b', 'c');
+    </script>
+
+
+
+    <script>
+        var obj = { name: 'simon2' }
+        var fun = function () {
+            return this.name
+        }
+        // bind和上面的类似，只不过它可以创建一个函数并永久修改这个函数内部this指向
+        var fun1 = fun.bind(obj)
+        var obj2 = { name: 'simon3', fun1: fun1 }
+
+        console.log(fun1(), ' window,fun1()')
+        console.log(obj2.fun1(), ' obj2.fun1()') // 不管在哪里调用，都输出obj对象的name属性值
+        obj.name = 'simon4'
+        console.log(fun1(), ' obj={name:"simon4"}后，调用window,fun1()');
+        console.log(obj2.fun1(), ' obj={name:"simon4"}后，调用obj2.fun1()');
+    </script>
+
 </body>
+
 </html>
