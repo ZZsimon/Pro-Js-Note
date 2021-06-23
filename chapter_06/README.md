@@ -6,5 +6,5 @@
 - 1.1 [对象的各种属性](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_01/property.html)
 - 1.2 [对象的访问器属性的典型应用场景](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_01/mvvm.html)
 #### 1. 创建对象
-- 1.1 [工厂模式](tps://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_02/factory.html)
-- 1.1 [构造函数模式](tps://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_02/constructor.html)
+- 1.1 [工厂模式](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_02/factory.html)
+- 1.1 [构造函数模式](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_02/constructor.html)
