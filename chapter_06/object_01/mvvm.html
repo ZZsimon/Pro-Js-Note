@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM</title>
+</head>
+
+<body>
+
+    <div id='mvvm'></div>
+    <input id='input' type="text">
+
+</body>
+
+<script>
+    var observable = function (obj) {
+        // obj是一个外部obj对象的指针
+
+        // obj[key] 是外部obj对象的具体属性值
+        Object.keys(obj).forEach(key => defineReactive(obj, key, obj[key]))
+    }
+    function defineReactive(obj, key, val) {
+        // val已经是一个具体属性值了，因此不会触发【获取属性】这个动作
+        Object.defineProperty(obj, key, {
+            get: function () {
+                console.log(`获取${key}属性`);
+                return val;
+            },
+            set: function (newVal) {
+                console.log(newVal);
+                console.log(`修改了${key}属性`);
+                setFun(newVal)
+                val = newVal;
+            }
+        });
+
+    }
+</script>
+
+<script>
+    var obj = { name: 'simon' }
+
+    // 给obj对象增加访问器属性
+    observable(obj)
+
+
+    // 这个时候在外部定义一个函数
+    // 这个函数接收一个数据来替换具体DOM内容
+    function setFun(newVal) {
+        const dom = document.getElementById('mvvm')
+        dom.innerHTML = newVal
+    }
+    // 如果把这个函数放到set函数中，就可以做到数据变化改变页面内容
+    obj.name = '我是变化后的数据，我会显示在DOM中'  // 触发set函数
+
+
+    // 上面是用js脚本改变数据，通过用户输入来改变数据呢？
+    var input = document.getElementById('input')
+    input.oninput = function (e) {
+        obj.name = e.target.value
+    }
+
+    // 这就是vue2.0版本框架中实现双向数据绑定的原理
+    // 访问器属性的一个典型应用场景
+
+</script>
+
+</html>

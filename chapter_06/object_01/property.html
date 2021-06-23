@@ -10,6 +10,7 @@
 
 <body>
 
+
     <script>
         var obj = {
             name: 'simon',
@@ -20,8 +21,60 @@
                 alert(this.name)
             }
         }
-        // obj对象的每一个属性值在创建的时候都会有一些特征值
-        // js通过这些特征值来定义这些属性的行为和功能
+        // obj对象的每一个属性值都会有各种特征，这些特征在js脚本中无法访问到它们，在宿主环境实现js引擎的时候会用到它们
+        // js引擎通过这些特征值来定义这些属性的行为和功能
+
+        // 因此这些特征都是对象的内部值，用[[ ]]显示这些内部值。比如[[Enumerable]]，表示外部无法访问到它们
+
+    </script>
+
+
+    <script>
+        // ECMAScript对象有两种属性：数据属性和访问器属性
+
+        // 数据属性
+    </script>
+
+
+
+    <script>
+
+        /* 访问器属性作用：监听对象的每一个属性变化 */
+
+        var obj = {
+            name: 'simon',
+            age: 11
+        }
+        var obj2 = {
+            name: 'simon2',
+            age: 111
+        }
+
+        function defineReactive(obj, key) {
+            let objVal = obj[key]
+            Object.defineProperty(obj, key, {
+                get: function () {
+                    console.log('触发get');
+                    return objVal;
+                },
+                set: function (newVal) {
+                    console.log('触发set');
+                    objVal = newVal
+                }
+            });
+        }
+        defineReactive(obj, 'name')
+        defineReactive(obj, 'age')
+
+
+        // obj和obj2的区别就是：obj的每一个属性值变化都能监听到
+        obj.name // 触发get函数
+
+        obj.name = 'mike'  // 触发set函数
+        obj2.name = 'mike2'
+
+        obj.age = 22  // 触发set函数
+        obj2.age = 222
 
     </script>
 
