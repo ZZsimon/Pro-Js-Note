@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建对象-构造函数模式</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 为什么需要【构造函数模式】？ */
+
+        // 创建对象目前最方便的方式是【工厂模式】
+        function factory(name, age) {
+            var obj = {
+                name: name,
+                age: age,
+                hobby: function () { alert(this.name) }
+            }
+            return obj
+        }
+        var person1 = factory('simon', 11)
+        var person2 = factory('mike', 22)
+        /*
+            可以看到person1和person2这两个对象都是由对象字面量的方式创建的
+            也就是说他们都是Object这个引用类型的实例
+
+            这就导致了使用工厂模式创建的对象都是同一种引用类型的实例
+            而事实上对于创建的对象，我们需要细分出类型，从而更好的管理
+        */
+
+        // 于是，人们想出来了【构造函数模式】
+        function Person(name, age) {
+            this.name = name
+            this.age = age
+            this.hobby = function () { alert(this.name) }
+        }
+        var person1 = new Person('simon', 11)
+        var person2 = new Person('mike', 22)
+
+        /* 
+            虽然Person内部没有创建对象，但其实使用new操作符调用函数
+            就意味着将Person这个函数作为构造函数调用
+            这种方式也是一种创建对象的方式
+            
+            其中调用的时候，函数内部的this指向不会指向【函数调用的时候属于的那个对象】
+            而是会指向那个新创建的对象
+            因此this.name，其实就给这个对象添加属性
+        */
+
+        // 每个对象都会有一个属性：constructor
+        // 它的作用是标识出：由哪个构造函数创建出这个对象的
+        console.log(person1.constructor); // 指向Person这个构造函数
+        console.log(person2.constructor); // 指向Person这个构造函数
+
+        console.log(person1.constructor === Person); // true
+
+        // 因此我们可以定义出不同的构造函数来创建不同的对象
+        // 这些对象可以通过constructor来分类，以更好的管理
+        // 这一点，工厂模式无法做到
+
+        function factory1(name, age) {
+            var obj = {
+                name: name,
+                age: age,
+                hobby: function () { alert(this.name) }
+            }
+            return obj
+        }
+        function factory2(name, age) {
+            var obj = {
+                city: '上海'
+            }
+            return obj
+        }
+
+        var person1 = factory1('simon', 11)
+        var person2 = factory1('mike', 22)
+        var person3 = factory2('mike', 22)
+        /*
+            有什么办法可以给person1、person2、person3这三个对象分类？
+            没有什么办法
+
+            而如果使用不同的构造函数，通过查看这三个对象的constructor属性值
+            就可以区分出来
+        */
+
+
+    </script>
+
+</body>
+
+</html>

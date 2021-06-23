@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建对象-工厂模式</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* 为什么需要【工厂模式】？ */
+
+        // 创建对象目前最方便的方式是【对象字面量】
+        var person = {
+            name: 'simon',
+            age: 11,
+            hobby: function () { alert(this.name) }
+        }
+        var person1 = {
+            name: 'mike',
+            age: 22,
+            hobby: function () { alert(this.name) }
+        }
+        /*
+            可以看到person1和person2这两个结构很类似，都有相同的属性
+            但是创建它们的时候
+                1.每一个对象都需要写这些属性，这些属性都是一样的代码
+                2.每个对象的方法都是一样的代码
+            这显然是可以优化的
+        */
+
+        // 于是，人们想出来了【工厂模式】，把创建的过程抽象到一个函数中
+        function factory(name, age) {
+            var obj = {
+                name: name,
+                age: age,
+                hobby: function () { alert(this.name) }
+            }
+            return obj
+        }
+        var person1 = factory('simon', 11)
+        var person2 = factory('mike', 22)
+
+
+
+    </script>
+
+</body>
+
+</html>
