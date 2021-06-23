@@ -3,11 +3,4 @@
 - 因此对象是一组没有特定顺序的值
 
 #### 1. 理解对象
-- 1.1 [对象的各种属性](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/object_01/property.html)
-
-#### 2. 创建对象
-- 2.1 [没有重载、函数声明和函数表达式](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_01.html)
-
-#### 3. 继承
-- 3.1 [没有重载、函数声明和函数表达式](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_05/function_04/function_01.html)
-
+- 1.1 [对象的各种属性](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_01/property.html)
