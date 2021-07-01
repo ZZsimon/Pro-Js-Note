@@ -14,7 +14,7 @@ JavaScript高级程序设计读书笔记
 
 第六章：[面向对象](https://github.com/ZZsimon/Pro-Js-Note/tree/master/chapter_06)
 
-第六章：[函数表达式](https://github.com/ZZsimon/Pro-Js-Note/tree/master/chapter_07)
+第七章：[函数表达式](https://github.com/ZZsimon/Pro-Js-Note/tree/master/chapter_07)
 
 #### todo:
 - Object.defineProperty是否会形成必包？[理解对象的set方法](https://github.com/ZZsimon/Pro-Js-Note/blob/master/chapter_06/object_01/testSet_02.html.html)
