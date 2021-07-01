@@ -17,13 +17,12 @@
 
 <script>
     var observable = function (obj) {
-        // obj是一个外部obj对象的指针
-
-        // obj[key] 是外部obj对象的具体属性值
         Object.keys(obj).forEach(key => defineReactive(obj, key, obj[key]))
     }
     function defineReactive(obj, key, val) {
-        // val已经是一个具体属性值了，因此不会触发【获取属性】这个动作
+        // val作为函数内部的临时变量
+        // 在函数运行完毕应该会被清理干净
+        // 但是还是可以获取到是因为形成了必包
         Object.defineProperty(obj, key, {
             get: function () {
                 console.log(`获取${key}属性`);
@@ -33,6 +32,8 @@
                 console.log(newVal);
                 console.log(`修改了${key}属性`);
                 setFun(newVal)
+
+                // 赋值给val这个临时变量，因此读取的时候能读取到改变后的值
                 val = newVal;
             }
         });

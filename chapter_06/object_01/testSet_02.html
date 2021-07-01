@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理解set方法</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    var obj = {
+        name: 'simon',
+    }
+
+    function defineReactive(obj, key) {
+        // 注意objVal是一个临时变量 是基本类型变量
+        var objVal = obj[key]
+        Object.defineProperty(obj, key, {
+            get: function () {
+                console.log('触发get');
+                console.log(objVal, 'objVal');
+                // 返回的是objVal这个临时变量的值
+                return objVal;
+            },
+            set: function (newVal) {
+                // 传入的newVal也被赋值给objVal这个临时变量
+                // 之后获取的时候因为读取的也是这个临时变量，因此可以读取到新的值
+                console.log('触发set');
+                objVal = newVal
+            }
+        });
+    }
+    defineReactive(obj, 'name')
+    console.log(obj);
+    obj.name = 'mike'
+    console.log(obj);
+
+    // defineReactive执行结束，内部的objVal变量应该被回收了
+    // 后面应该拿不到这个变量
+    // 因此怀疑 Object.defineProperty方法形成了必包，将objVal变量保留了下来
+    // 因此下面将开始验证是否会回收
+
+    // 这个后面看到必包再来研究
+</script>
+
+</html>

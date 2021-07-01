@@ -51,7 +51,7 @@
         }
 
         function defineReactive(obj, key) {
-            let objVal = obj[key]
+            var objVal = obj[key]
             Object.defineProperty(obj, key, {
                 get: function () {
                     console.log('触发get');

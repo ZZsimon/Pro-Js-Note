@@ -12,8 +12,12 @@
 
     <script>
         /*
-            ECMAScript中内置了很多对象，这些对象在ECMAScript程序执行前就存在了
-            比如Object、Array、String等等，他们都是构造函数，但是函数也是对象～
+            ECMAScript中内置了很多对象，对象用来保存复杂数据，上面有会挂载属性和方法
+            这些对象在ECMAScript程序执行前就存在了
+
+            比如Object、Array、String等等，他们都是构造函数
+            但是构造函数也是对象～，因为构造函数也是函数，而函数也是一种对象
+            函数是Function这个引用类型的实例，设计出来的目的是为了可以封装多条语句执行
         */
 
     </script>
@@ -24,7 +28,7 @@
 
         // 不属于任何其他对象的属性和方法都是它的属性和方法
         // 在浏览器中window对象的一部分包含了Global对象
-        // 因此在浏览器中所有最外层的变量都是window的属性
+        // 因此在浏览器中所有最外层的变量都是window对象的属性
 
         // 查看Global对象
         var testGlobal = function () {
@@ -44,8 +48,18 @@
         console.log(max, 'max');
 
         // 利用apply来打散数组
+        // 并不是为了利用改变this指向的功能
+        // 是为了apply方法另外一个功能，传入一个数组，它可以打散数组
+        // 这里传入的对象依然是Math
         var max = Math.max.apply(Math, arr)
         console.log(max, 'max');
+        /*
+            apply是一种特殊的调用函数方式
+            调用函数方式：
+                    function aa(){}
+                1.aa() 调用的时候内部this指向调用时函数属于哪个对象
+                2.apply 调用的时候内部this执行传入的对象
+        */
     </script>
 </body>
 
