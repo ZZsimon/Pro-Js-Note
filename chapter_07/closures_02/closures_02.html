@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for循环中的闭包</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    function createFunctions() {
+        var res = []
+        for (var index = 0; index < 10; index++) {
+            res[index] = function () {
+                return index
+            }
+
+        }
+        return res
+    }
+    var list=createFunctions()
+    /*
+        开始解析执行过程：
+        1. 定义全局变量 createFunctions
+            此时createFunctions函数的作用域链有1个指针：window
+        2. 执行createFunctions函数
+            此时createFunctions函数的作用域链有2个指针：createFunctions函数的AO -> window
+            AO中有一个变量res
+            然后进入循环体，又定义了一个变量index
+            修改res变量，第一个值是一个匿名函数，这个匿名函数被创建的时候作用域链的指针：createFunctions函数的AO -> window
+            list全局变量引用着数组，数组中第一项引用一个函数，这个函数的scope属性引用着一个指针
+            当这个函数调用的时候，它的作用域链：
+                                匿名函数的AO -> createFunctions函数的AO -> window
+                                它去找index的值，匿名函数的AO中没有
+                                           createFunctions函数的AO中有，但是执行这个匿名函数的时候，index已经变成10了
+            数组中其他函数也是一样的道理。
+            
+    */
+</script>
+
+
+
+<script>
+    function createFunctions2() {
+        var res = []
+        for (var index = 0; index < 10; index++) {
+            res[index] = function (num) {
+                return function(){
+                    console.log(index);
+                    return num
+                }
+            }(index)
+
+        }
+        return res
+    }
+    var list2=createFunctions2()
+    /*
+        开始解析执行过程：
+        1. 定义全局变量 createFunctions
+            此时createFunctions函数的作用域链有1个指针：window
+        2. 执行createFunctions函数
+            此时createFunctions函数的作用域链有2个指针：createFunctions函数的AO -> window
+            AO中有一个变量res，然后进入循环体，又定义了一个变量index
+            修改res变量，第一个值是一个匿名函数立即执行后返回的结果。
+                        这个匿名函数传入每次循环的index值，最后还是返回一个函数
+                        所以其实第一个值仍然是一个匿名函数
+                        那么这个匿名函数创建的时候作用域链是：
+                            包含它的立即执行的匿名函数的AO -> createFunctions2的AO -> window
+                        执行的时候的作用域链：
+                            自身的AO -> 包含它的立即执行的匿名函数的AO -> createFunctions2的AO -> window
+                        执行的时候，尽管循环已经结束了，但是这个并不是访问index变量，而是访问num变量
+                            自身的AO没有
+                            包含它的立即执行的匿名函数的AO中有，这个num值是0
+                            于是返回0
+                            
+                            其实这个时候如果还是访问index
+                            那么createFunctions2的AO中的index值每一个函数都是访问到10
+            
+    */
+</script>
+
+</html>
