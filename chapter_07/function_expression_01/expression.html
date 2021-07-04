@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数表达式</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    /*
+        就和定义一个对象类似
+        myFun是 变量名
+        function () { } 是一个对象，它被叫做匿名函数
+    */
+    var myFun = function () { console.log('myFun') }
+
+</script>
+
+<script>
+    // 匿名函数既然是一个对象，那它也可以被作为一个变量传入函数中，也可以被函数返回
+
+    var myFun2 = function (obj) {
+        obj()
+        return function () {
+            console.log(2);
+        }
+    }
+    myFun2(myFun)
+</script>
+
+</html>

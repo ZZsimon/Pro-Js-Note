@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    /*
+        匿名函数：指function关键字后没有带函数名的函数
+        闭包：指有权访问另一个函数作用域中的变量的函数
+    */
+
+    function fun01(name) {
+        var fun02 = function (obj) {
+            var val = obj[name]
+            console.log(name, 'name');
+            console.log(val, 'val');
+        }
+    }
+    var fun = fun01('age')
+    fun({ age: 11 })
+
+    /*
+        创建函数的时候，函数执行时的执行环境的作用域链的一部分就会被创建
+        这个作用域链是由 函数定义在具体的位置有关系
+
+        在全局：这一部分作用域链 【window对象】
+            执行的时候作用域链被完善为 【执行的函数AO -> window对象】
+
+        在函数中：这一部分作用域链 【函数的AO对象 -> window对象】
+            执行的时候作用域链被完善为 【执行的函数AO -> 执行的函数AO -> window对象】
+
+
+        所以如果函数创建的时候
+
+    */
+</script>
+
+</html>

@@ -27,7 +27,7 @@
 
             代码在某一个环境执行的时候，会创建当前执行环境的变量对象的一个作用域链
             作用域链被创建出来的作用是保证变量和函数的有序访问
-            作用域上的对象都是变量对象（window或者AO）
+            作用域链上的对象都是变量对象（window或者AO）
             
             作用域链的前端始终都是当前执行环境的变量对象，全局执行环境的变量对象是作用域链的最后一个对象
                 全局执行环境的变量对象window的作用域链：window    
@@ -45,7 +45,7 @@
         function changeColor() {
             // 函数执行的时候因为都会有一个函数执行环境
             // 所以会创建AO和作用域链
-            // changeColorAO的作用域链：函数changeColor的AO -> window
+            // changeColor的作用域链：函数changeColor的AO -> window
 
             // 访问color变量
             // 函数changeColor的AO中没有，向下寻找，发现window中有，就访问到了 color='blue'
