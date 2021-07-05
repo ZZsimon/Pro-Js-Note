@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私有变量</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // js中函数中定义的变量都可以被称为私有变量
+    // 因为函数外部访问不到
+    // 那么如果我们想访问到呢？
+    // 利用闭包
+
+    var name = 'simon'
+    var obj = {
+        name: 'mike',
+        getName: function () {
+            var name = 'Kobe'
+            return function () {
+                return name
+            }
+        }
+    }
+    var getKobe = obj.getName()
+
+    console.log(getKobe());
+</script>
+
+</html>

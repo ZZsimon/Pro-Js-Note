@@ -22,7 +22,7 @@
     function defineReactive(obj, key, val) {
         // val作为函数内部的临时变量
         // 在函数运行完毕应该会被清理干净
-        // 但是还是可以获取到是因为形成了必包
+        // 但是还是可以获取到是因为get和set这两个函数用到了val这个变量，他们都是闭包
         Object.defineProperty(obj, key, {
             get: function () {
                 console.log(`获取${key}属性`);
@@ -33,7 +33,7 @@
                 console.log(`修改了${key}属性`);
                 setFun(newVal)
 
-                // 赋值给val这个临时变量，因此读取的时候能读取到改变后的值
+                // 赋值给val这个临时变量，因此读取的时候能读取到defineReactive的AO
                 val = newVal;
             }
         });

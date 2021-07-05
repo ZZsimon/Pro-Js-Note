@@ -49,10 +49,10 @@
         get函数执行的时候
             get函数的AO -> defineReactive的AO -> window对象指针
         为什么defineReactive的AO的AO一直在内存中呢？
-        因为get函数所在的对象一直在内存中，而这个对象的get方法有一个scope属性引用着一条作用域链：
-                defineReactive的AO -> window对象指针
-            因此只要get函数所在的对象没有被销毁，defineReactive的AO就一直会保存，
-            而AO中的objVal这个变量就可以一直用
+        因为get函数是一个闭包，并且get是全局变量obj的一个内部属性，所以导致这个闭包不会被释放
+        而这个闭包有一个scope属性引用着一条作用域链：
+            defineReactive的AO -> window对象指针
+        因此只要全局变量obj没有被销毁，defineReactive的AO就一直会保存，而AO中的objVal这个变量就可以一直用
 
         set同理，并且set函数执行的时候访问到的【defineReactive的AO】和get函数访问到的是同一个
         因为这两个函数被创建出来的时候位置是一致的 他们的scope属性都引用这条作用域链：

@@ -85,4 +85,57 @@
     */
 </script>
 
+
+<script>
+
+
+    // 测试fun是否是一个闭包
+    function outputNumbers(count) {
+        var a = 0
+        var fun = function () {
+            for (var index = 0; index < count; index++) {
+                a += index
+            }
+            console.log(a);
+        }
+        fun()
+        return fun
+    }
+    var outFun = outputNumbers(3)
+    outFun()
+    // 执行的时候count=3，此时a的值是3
+    // 执行完毕，a = 3+0+1+2 = 6
+
+    outFun()
+    // 执行的时候count=3，此时a的值是6
+    // 执行完毕，a = 6+0+1+2 = 9
+
+
+</script>
+
+<script>
+    // 如果不return
+    // fun还是一个闭包吗？
+
+    // 答案是 是的 
+    // 因为只要这个函数可以访问到另一个函数作用域中的变量，它就可以被称为闭包
+
+    // 和上面的区别是这里的闭包执行完后，就会释放outputNumbers的AO
+    // 因为没有全局变量引用这个闭包函数
+    // 多次执行outputNumbers，打印出的a的值一直都是0+0+1+2=3
+    function outputNumbers(count) {
+        var a = 0
+        var fun = function () {
+            for (var index = 0; index < count; index++) {
+                a += index
+            }
+            console.log(a);
+        }
+        fun()
+    }
+    outputNumbers(3)
+    outputNumbers(3)
+</script>
+
+
 </html>
