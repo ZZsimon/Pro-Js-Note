@@ -101,14 +101,8 @@
 
 
         function setName2(obj) {
-            // 拿到的【obj变量】是一个内存地址的指针
-            // 修改对象可以访问到内存，因此会改变【obj变量】指向的内存中的值
-            // 此时person2变量和obj指向的是同一个地址，所以person2的值被影响到了
             obj.name = 'simon'
 
-            // 重新给【obj变量】赋值一个新对象
-            // 此时【obj变量】指向了一个新的内存地址
-            // 此时obj变量指向的内存地址如果发生变化，不会影响person2了
             obj = new Object({a:2})
 
             obj.name = 'hahahaha'
