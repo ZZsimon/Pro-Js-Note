@@ -35,6 +35,10 @@ function MyPromise01(fn) {
     */
     fn(resolve);
 }
+
+/**
+ * resolve的方法存在是为了执行通过then注册的回调方法
+ */
 const p1=new MyPromise01((resolve,reject) => {
     // 异步操作执行完毕
     // 开始执行resolve
