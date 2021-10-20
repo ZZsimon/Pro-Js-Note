@@ -128,23 +128,23 @@
 
     <script>
         /*
-        
             错误跟踪问题
-        
         */
 
         const time = (callback) => {
             setTimeout(() => {
-                try {
-                    console.log(aaaa) // aaaa未定义
-                    callback()
-                } catch (err) {
-                    throw err
-                }
+                console.log(aaaa) // aaaa未定义
+                callback()
             }, 1000)
         }
 
-        const cb = () => console.log('success');
+        const cb = () => {
+            try {
+                console.log('success')
+            } catch (error) {
+                console.log(error,'success error');
+            }
+        }
 
         // try...catch无法捕获到time中的报错
         try {
@@ -153,8 +153,74 @@
             console.log('err', err)
         }
 
-        // 执行代码会发现：传入的回调函数cb没有执行，但是外部获取不到内部发生的错误，导致没法排查错误
-        // 为什么捕获不到
+        /*
+            传入的回调函数没有执行，但是外部获取不到内部发生的错误，导致没法排查错误
+        为什么捕获不到：
+            try catch只能捕获到当前执行栈中的错误
+            由于cb这个回调函数执行在一个异步任务中，而异步任务会放入任务队列中，异步队列并不会在执行栈中执行
+            因此cb无法执行的原因try catch无法捕获到
+        
+
+        */
+
+         
+    </script>
+
+
+    <script>
+        /*
+            并行问题：我们自己定义的回调函数cb需要等待3个异步操作执行完毕才能执行
+        */
+
+        // 先思考第一种方法
+        let isFinishedA=false,isFinishedB=false,isFinishedC=false;
+        function mainA(cb) {
+            // mainA 内部代码
+            isFinishedA=true
+            // ...
+
+            // mainA 已经执行完毕
+            // 开始执行cb，需要检测另外两个异步任务是否执行完毕
+           if(isFinishedB && isFinishedC){
+            cb()
+           }
+        }
+
+        function mainB(cb) {
+           // mainB 内部代码
+           isFinishedB=true
+            // ...
+
+            // mainB 已经执行完毕
+            // 开始执行cb，需要检测另外两个异步任务是否执行完毕
+           if(isFinishedA && isFinishedC){
+            cb()
+           }
+        }
+       
+        function mainC(cb) {
+           // mainC 内部代码
+           isFinishedC=true
+            // ...
+
+            // mainC 已经执行完毕
+            // 开始执行cb，需要检测另外两个异步任务是否执行完毕
+           if(isFinishedB && isFinishedA){
+            cb()
+           }
+        }
+    
+        function main() {
+            mainA()   
+            mainB()   
+            mainC()   
+        }
+        
+        /*
+            显然为了实现并行问题，mainA mainB mainC耦合非常严重
+            这是非常糟糕的实现方法
+                - 如果再增加一个异步操作，需要更改其他三个异步函数中的代码，so bad...
+        */
     </script>
 </body>
 
